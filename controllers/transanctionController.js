@@ -18,8 +18,9 @@ export const getTokenRequest = async (req, res) => {
         const tokenData = await token.json();
         AuthToken = tokenData.access_token;
         localStorage.setItem("accessToken", AuthToken);
+        res.status(200).json(tokenData);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        // res.status(500).json({ error: err.message });
     }
 };
 getTokenRequest();
@@ -32,13 +33,13 @@ const sharedShortCode = true;         // Set to true for KCB's short code
 
 export const STKPush = async (req, res) => {
     try {
-        const { phoneNumber, amount, invoiceNumber } = req.body;
+        const { phoneNumber, amount, invoiceNumber, token } = req.body;
 
-        if (!phoneNumber || !amount || !invoiceNumber) {
+        if (!phoneNumber || !amount || !invoiceNumber || !token) {
             return res.status(400).json({ message: 'All fields are required'});
         }
 
-        const token = localStorage.getItem("accessToken");
+        // const token = localStorage.getItem("accessToken");
         console.log(token);
         const response = await fetch(process.env.STK_PUSH_URL, {
             method: "POST",
@@ -61,7 +62,7 @@ export const STKPush = async (req, res) => {
             res.status(201).json(responseData);
         }
     } catch (err) {
-        res.status(500).json({ error: err.message});
+        // res.status(500).json({ error: err.message});
     }
 };
 
