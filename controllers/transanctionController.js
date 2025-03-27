@@ -5,10 +5,11 @@ let AuthToken = null;
 
 export const getTokenRequest = async (req, res) => {
     try {
+        const {username, password} = req.body;
         // Base64 encode the key and secret
-        const credentials = Buffer.from(`${process.env.BUNI_USERNAME}:${process.env.BUNI_PASSWORD}`).toString('base64');
-        const tokenurl = process.env.BUNI_TOKEN_REQUEST_URL;
-        const token = await fetch(tokenurl, {
+        const credentials = Buffer.from(`${username}:${password}`).toString('base64');
+        const tokenUrl = process.env.BUNI_TOKEN_REQUEST_URL;
+        const token = await fetch(tokenUrl, {
             method: "POST",
             headers: {
                 "Authorization": `Basic ${credentials} `,
@@ -17,24 +18,26 @@ export const getTokenRequest = async (req, res) => {
         const tokenData = await token.json();
         AuthToken = tokenData.access_token;
         localStorage.setItem("accessToken", AuthToken);
-        // console.log(localStorage.getItem("accessToken"));
     } catch (err) {
-        // res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message });
     }
 };
 getTokenRequest();
 
-// STK Push request details
-const phoneNumber = '254793892167';  // Replace with actual phone number
-const amount = '1';                  // Amount to transfer
-const invoiceNumber = 'Alvinjrfoodplace';  // Replace with actual invoice number
+
 const callbackUrl = 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush';  // Your callback URL
 const sharedShortCode = true;         // Set to true for KCB's short code
 
 
 
-export const STKpush = async (req, res) => {
+export const STKPush = async (req, res) => {
     try {
+        const { phoneNumber, amount, invoiceNumber } = req.body;
+
+        if (!phoneNumber || !amount || !invoiceNumber) {
+            return res.status(400).json({ message: 'All fields are required'});
+        }
+
         const token = localStorage.getItem("accessToken");
         console.log(token);
         const response = await fetch(process.env.STK_PUSH_URL, {
@@ -54,9 +57,12 @@ export const STKpush = async (req, res) => {
             })
         });
         const responseData = await response.json();
+        if (response.ok){
+            res.status(201).json(responseData);
+        }
     } catch (err) {
-        // res.status(500).json({ error: err.message});
+        res.status(500).json({ error: err.message});
     }
 };
 
-STKpush()
+STKPush();
