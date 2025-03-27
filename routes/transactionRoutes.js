@@ -1,5 +1,5 @@
 import express from 'express'
-import { getTokenRequest, STKPush } from '../controllers/transanctionController';
+import { getTokenRequest, STKPush } from '../controllers/transanctionController.js';
 
 
 const transactionRouter = express.Router();

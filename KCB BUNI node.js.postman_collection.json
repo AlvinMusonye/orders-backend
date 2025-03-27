@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "e1d03580-d76a-4123-a2ee-611453ecbdba",
+		"name": "KCB BUNI node.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43112290"
+	},
+	"item": [
+		{
+			"name": "getToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"ogBCP2tyCG0LY4qqfNv13QWKgk8a\",\n    \"password\": \"_TXPCYS4qeJ1AF7n0tCGb22LVU8a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/orders/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"orders",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STKPush",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJ4NXQiOiJNR1F6TmprelptVTFaV1k0T0dFNU5UZGpPRFU1T1RSak9ETmtaalZpWWpoaE4yRmtaamRoTURBNVpUWXdNamM0T0dWa1l6RXdaVE13WW1WbFlqZ3hZZyIsImtpZCI6Ik1HUXpOamt6Wm1VMVpXWTRPR0U1TlRkak9EVTVPVFJqT0ROa1pqVmlZamhoTjJGa1pqZGhNREE1WlRZd01qYzRPR1ZrWXpFd1pUTXdZbVZsWWpneFlnX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbHZpbmpyMTAxQGNhcmJvbi5zdXBlciIsImF1dCI6IkFQUExJQ0FUSU9OIiwiYXVkIjoib2dCQ1AydHlDRzBMWTRxcWZOdjEzUVdLZ2s4YSIsIm5iZiI6MTc0MzA4ODkzOSwiYXpwIjoib2dCQ1AydHlDRzBMWTRxcWZOdjEzUVdLZ2s4YSIsImlzcyI6Imh0dHBzOlwvXC9rY2Itd3NvMmlzLmFwcHMudGVzdC5hcm8ua2NiZ3JvdXAuY29tOjk0NDRcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE3NDMwOTI1MzksImlhdCI6MTc0MzA4ODkzOSwianRpIjoiZjkzMjI5ZmItODQ3Ny00OTgzLTliNTgtZmQxZjM2OTg4Y2U3In0.HWOjk5MYdtr-heUJK4TcJRuDGEoV90KUwD_mm0p5Y7qBCWLdJ2I5asvyqNOiPKbHU_gV_at7SkYcOmEn-u1jWT8LztpWbyaZCOqE6dkOgk4wzO0UMnDwSG3qC3h40RQxJbRhp2pcZT5Gq-gLL12XJN8eRbwoSeA0ycduogeBfRPOugx6UHry4rPpNmdfYbHY0i-a-YKFZ2iLLlqDgtf5xX4VcmrZLGNASXDzUlixEg4IAAPxuCSG6o2q4ZX7HdiywrizQWohgDAS1UuROBj7uUafGIr6M64_Tr4opQDph_c1BzzQApFZvyOcI4W8fezS-CYrmX8TShhxAa0_5psXHmcFJ59ZfXRXuQcBBtSNsEDKogWIDAjJ-MDAvQeLFuvnD54R9vIZXePF-l_rDypqMhuFs4-4To1oHvACCASwmFpZn7Bq76T1R_J3mJBAIyLC_s0F9mYvQjaz1gk_yWnBfxZcUMQYsSlzstvTm92FjjF8C9WDk7sK3XZB-Xya5hop4n0uqBRv1Qn9Us8tEFMFsZuEPw4kb2kg1QmB4zWt7CZhwmOulj3GkmEJtJ2a8WSr2lMyM6XwhwzuP5iF6arDkRkpRB4KDKvTbPd9SU4Mu9LlSY1MxNrVhdOQF3xoznY-Fpy3rblfLtbVhFEdXgi6gEOkHNpDnLEQ_rOv7H4wLVU\",\n    \"phoneNumber\": \"254793892167\",\n    \"amount\": 1000,\n    \"invoiceNumber\": \"FR3535bhf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/orders/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"orders",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
